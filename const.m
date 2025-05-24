@@ -12,7 +12,6 @@ function [c ceq] = const(x,Lx,Ly,rho,h,h0,d,Lr)
 
 %global Ar GPR Km h h0 d rho Lr 
 
-
 % Restricciones
 %% ---------------- Nonlinear inequality constraints ------------------
 %c(1)=x(2)-Dx;
@@ -44,8 +43,6 @@ LM=x(1)+(1.55+1.22*(Lr/(sqrt(Lx^2+Ly^2))))*Lr*x(7); %longuitud efectiva enterrad
 ceq(4)=rho*Km*Ki*IG/LM-x(6); %Voltage Mesh Em 
 Ks=1/pi*(1/(2*h)+1/(x(2)+h)+(1/x(2))*(1-0.5^(n-2)));
 
-ceq(5)=rho*Ks*Ki*IG/(0.75*x(1)+0.85*Lr*round(x(7)))-x(8); %Voltage Es 
+ceq(5)=rho*Ks*Ki*IG/(0.75*x(1)+0.85*Lr*x(7))-x(8); %Voltage Es 
 
 ceq(6)=x(2)-x(3); %Las dos separaciones tanto en X como Y, sean iguales.  
-
-
